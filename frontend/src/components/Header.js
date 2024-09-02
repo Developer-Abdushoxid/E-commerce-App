@@ -15,8 +15,6 @@ const Header = () => {
    const dispatch = useDispatch()
    const [menuDisplay, setMenuDisplay] = useState(false)
 
-   console.log("user header", user)
-
    const handleLogout = async() => {
     const fetchData = await fetch(SumaryApi.logout_user.url,{
       method: SumaryApi.logout_user.method,
@@ -68,7 +66,7 @@ const Header = () => {
             menuDisplay && (
             <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded'>
               <nav>
-                <Link to={"admin-panel"} className='whitespace-nowrap hover:bg-slate-100 p-2'>Admin Panel</Link>
+                <Link to={"admin-panel"} className='whitespace-nowrap hidden md:block hover:bg-slate-100 p-2' onClick={()=> setMenuDisplay(preve => !preve)}>Admin Panel</Link>
               </nav>
             </div>
             )
