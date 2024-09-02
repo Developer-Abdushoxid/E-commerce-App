@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SumaryApi from '../common'
 import { toast } from 'react-toastify';
+import moment from "moment"
 
 const AllUsers = () => {
     const [allUser, setAllUsers] = useState([])
@@ -29,7 +30,7 @@ const AllUsers = () => {
     },[])
 
   return (
-    <div>
+    <div className='bg-white pb-4'>
       <table className='w-full userTable'>
         <thead>
           <tr>
@@ -45,9 +46,11 @@ const AllUsers = () => {
             allUser.map((el,index) => {
               return(
                 <tr>
-                  <td>
-                    {index+1}
-                  </td>
+                  <td>{index+1}</td>
+                  <td>{el?.name}</td>
+                  <td>{el?.email}</td>
+                  <td>{el?.role}</td>
+                  <td>{moment(el?.createdAt).format("ll")}</td>
                 </tr>
               )
             })
